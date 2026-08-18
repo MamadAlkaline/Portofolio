@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moch Sholeh — Portofolio</title>
+<meta name="description" content="Portofolio video editing dan desain grafis oleh Moch Sholeh (Memed).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== Semua CSS digabung di sini, biar gak ada file kepisah yang bisa gagal ke-load ===== */
+  :root {
+    --bg: #07070C;
+    --ink: #F2F1F7;
+    --muted: #9C9AAE;
+    --line: #262536;
+    --accent: #A78BFA;
+    --accent-2: #60A5FA;
+    --card: #12111C;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+    zoom: 1.15;
+  }
+
+  a { color: inherit; }
+  img, video { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- SIGNATURE: animated galaxy background ---- */
+  .galaxy {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .galaxy canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .nebula {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    max-width: 700px;
+    max-height: 700px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    animation: drift 30s ease-in-out infinite;
+  }
+
+  .nebula--1 {
+    top: -10%;
+    left: -15%;
+    background: radial-gradient(circle, var(--accent), transparent 70%);
+  }
+
+  .nebula--2 {
+    bottom: -15%;
+    right: -10%;
+    background: radial-gradient(circle, var(--accent-2), transparent 70%);
+    animation-delay: -12s;
+    animation-duration: 26s;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(6%, 8%) scale(1.1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nebula { animation: none; }
+  }
+
+  /* ---- Nav ---- */
+  header {
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: rgba(7, 7, 12, 0.75);
+    backdrop-filter: blur(6px);
+    z-index: 10;
+  }
+
+  .nav {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__name { font-weight: 700; font-size: 16px; text-decoration: none; }
+
+  .nav__links { display: flex; gap: 20px; }
+  .nav__links a { font-size: 14px; text-decoration: none; color: var(--muted); }
+  .nav__links a:hover { color: var(--ink); }
+
+  /* ---- Intro ---- */
+  .intro {
+    padding: 56px 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .intro__photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 24px rgba(167, 139, 250, 0.45);
+  }
+
+  .intro h1 {
+    font-size: 34px;
+    margin: 0 0 4px;
+  }
+
+  .intro .role {
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+
+  .intro p {
+    color: var(--muted);
+    font-size: 16px;
+    margin: 0 0 16px;
+    max-width: 900px;
+  }
+
+  @media (max-width: 560px) {
+    .intro { flex-direction: column; align-items: flex-start; }
+  }
+
+  .intro-text {  display: flex;
+  justify-content: center; padding-bottom: 40px; }
+
+  .intro-text p {
+    color: var(--muted);
+    font-size: 16px;
+    margin: 0;
+    max-width: 900px;
+  }
+
+  /* ---- Education & experience ---- */
+  .facts {
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 48px;
+  }
+
+  .facts h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 6px;
+  }
+
+  .facts .edu {
+    font-size: 16px;
+    margin: 0 0 24px;
+  }
+
+  .facts ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .facts li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+  }
+
+  .facts li:first-child { border-top: none; }
+  .facts li span:last-child { color: var(--muted); text-align: right; }
+
+  /* ---- Tabs ---- */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .tab-btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .tab-btn.active {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+
+  .panel { display: none; padding-bottom: 60px; }
+  .panel.active { display: block; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .card__media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #000;
+  }
+
+  #panel-video .card__media {
+  aspect-ratio: 16 / 9;
+  }
+
+  .card__body { padding: 12px 14px 16px; }
+  .card__title { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  .card__meta { font-size: 12px; color: var(--muted); margin: 0; }
+
+  .hint {
+    color: var(--muted);
+    font-size: 13px;
+    margin: -16px 0 24px;
+  }
+
+  .hint code {
+    background: var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  /* ---- Contact ---- */
+  .contact {
+    padding: 48px 0 64px;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact h2 { font-size: 22px; margin: 0 0 20px; }
+
+  .contact__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .contact__list a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+  }
+
+  .contact__list a:first-child { border-top: none; }
+  .contact__list a span:last-child { color: var(--muted); }
+  .contact__list a:hover span:last-child { color: var(--accent); }
+
+  footer {
+    padding: 24px 0 40px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    .facts li { flex-direction: column; gap: 2px; }
+    .facts li span:last-child { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="galaxy" aria-hidden="true">
+  <canvas id="stars"></canvas>
+  <div class="nebula nebula--1"></div>
+  <div class="nebula nebula--2"></div>
+</div>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="nav__name">Moch Sholeh</a>
+    <nav class="nav__links">
+      <a href="#tentang">Tentang</a>
+      <a href="#karya">Karya</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <!-- INTRO -->
+  <section class="intro" id="tentang">
+    <!-- GANTI src FOTO INI dengan fotomu, taruh file-nya di assets/images/ -->
+    <img class="intro__photo" src="assets/images/SHOLEH.png" alt="Foto Moch Sholeh">
+    <div>
+      <h1>Moch Sholeh</h1>
+      <p class="role">Video Editor &amp; Graphic Designer</p>
+    </div>
+  </section>
+
+  <section class="intro-text">
+    <p>
+      Lulusan S1 Teknologi Informasi spesialisasi Visual Effects dengan pengalaman sebagai operator live broadcast pada acara kampus,
+      serta sekitar 1,5–2 tahun pengalaman di bidang video editing dan content creation (freelance dan in-house). 
+      Terbiasa menangani sisi teknis produksi (kamera, audio, switching sederhana) maupun pasca-produksi menggunakan 
+      Adobe Premiere Pro, After Effects, CapCut, dan Photoshop. Terbiasa bekerja dengan deadline ketat, cepat beradaptasi 
+      dengan alat produksi baru, dan terbiasa bekerja dalam tim di balik layar sebuah acara/siaran.
+    </p>
+  </section>
+
+  <!-- PENDIDIKAN & PENGALAMAN -->
+  <section class="facts">
+    <h2>Pendidikan</h2>
+    <p class="edu">S1 Teknologi Informasi (peminatan Visual Effects) — Universitas AMIKOM Yogyakarta</p>
+
+    <h2>Pengalaman Kerja</h2>
+    <ul>
+      <li><span>Content Creator</span><span>PT. Kong Akademi</span></li>
+      <li><span>Graphic Design Intern</span><span>PT. Dipdop Universe</span></li>
+      <li><span>Freelance Video &amp; Desain</span><span>CV. Parama Creative</span></li>
+      <li><span>CS Inbound</span><span>Shopee Indonesia</span></li>
+    </ul>
+  </section>
+
+  <!-- KARYA: TAB VIDEO / DESAIN -->
+  <section id="karya">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="video">Video</button>
+      <button class="tab-btn" data-tab="desain">Desain</button>
+       <button class="tab-btn" data-tab="ig">Instagram</button>
+    </div>
+
+    <!-- PANEL VIDEO -->
+    <div class="panel active" id="panel-video">
+      <div class="grid">
+
+        <!-- ==== GANTI KARTU VIDEO DI SINI ==== -->
+        <div class="card">
+          <video class="card__media" controls poster="assets/images/placeholder-video-1.jpg">
+            <source src="assets/videos/BUMPER BANK BPD.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">BUMPER BANK BPD</p>
+            <p class="card__meta">Sebagai editor , mengerjakan video bumper untuk bank yang ada di jogja untuk eventnya</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <video class="card__media" controls poster="assets/images/placeholder-video-2.jpg">
+            <source src="assets/videos/BUMPER ML.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">BUMPER ML</p>
+            <p class="card__meta">Sebagai editor , mengerjakan video bumper untuk game Mobile Legends</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
+            <source src="assets/videos/BUMPER SD AL AZHAR.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">BUMPER SD AL AZHAR</p>
+            <p class="card__meta">Sebagai editor , mengerjakan video bumper untuk sekolah dasar Al-Azhar</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
+            <source src="assets/videos/LOGO ANIMASI.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">LOGO ANIMASI</p>
+            <p class="card__meta">Sebagai editor , mengerjakan video logo animasi untuk sebuah brand</p>
+          </div>
+        </div>
+        <!-- ==== SAMPAI SINI ==== -->
+
+      </div>
+    </div>
+
+    <!-- PANEL DESAIN -->
+    <div class="panel" id="panel-desain">
+      <div class="grid">
+
+        <!-- ==== GANTI KARTU DESAIN DI SINI ==== -->
+        <div class="card">
+          <img class="card__media" src="assets/images/design-01.jpg" alt="Karya desain 1">
+          <div class="card__body">
+            <p class="card__title">Judul Desain 1</p>
+            <p class="card__meta">Poster · Social Media</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card__media" src="assets/images/design-02.jpg" alt="Karya desain 2">
+          <div class="card__body">
+            <p class="card__title">Judul Desain 2</p>
+            <p class="card__meta">Key Visual · Branding</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card__media" src="assets/images/design-03.jpg" alt="Karya desain 3">
+          <div class="card__body">
+            <p class="card__title">Judul Desain 3</p>
+            <p class="card__meta">Feed · Carousel</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card__media" src="assets/images/design-04.jpg" alt="Karya desain 4">
+          <div class="card__body">
+            <p class="card__title">Judul Desain 4</p>
+            <p class="card__meta">Logo · Identity</p>
+          </div>
+        </div>
+        
+        <!-- ==== SAMPAI SINI ==== -->
+
+      </div>
+    </div>
+
+   <div class="panel" id="panel-ig">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:80px 16px;text-align:center;">
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <a href="https://instagram.com/smkdigital.drwahidin" target="_blank" rel="noopener"
+         style="font-size:22px;font-weight:700;color:var(--ink);text-decoration:none;">
+        @smkdigital.drwahidin
+      </a>
+      <span style="font-size:13px;color:var(--muted);">Tap buat lihat semua editan</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <a href="https://instagram.com/lembar.pintar" target="_blank" rel="noopener"
+         style="font-size:22px;font-weight:700;color:var(--ink);text-decoration:none;">
+        @lembar.pintar
+      </a>
+      <span style="font-size:13px;color:var(--muted);">Tap buat lihat semua editan</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <a href="https://instagram.com/sekolah_freelancer" target="_blank" rel="noopener"
+         style="font-size:22px;font-weight:700;color:var(--ink);text-decoration:none;">
+        @sekolah_freelancer
+      </a>
+      <span style="font-size:13px;color:var(--muted);">Tap buat lihat semua editan</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <a href="https://instagram.com/cembu_ng" target="_blank" rel="noopener"
+         style="font-size:22px;font-weight:700;color:var(--ink);text-decoration:none;">
+        @cembu_ng
+      </a>
+      <span style="font-size:13px;color:var(--muted);">Tap buat lihat semua editan</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==== SAMPAI SINI ==== -->
+  </section>
+
+  <!-- KONTAK -->
+  <section class="contact" id="kontak">
+    <h2>Kontak</h2>
+    <div class="contact__list">
+      <a href="mailto:sholehmuhammad0123@gmail.com">
+        <span>Email</span><span>sholehmuhammad0123@gmail.com</span>
+      </a>
+      <a href="https://wa.me/6285336319490" target="_blank" rel="noopener">
+        <span>WhatsApp</span><span>+62 853-3631-9490</span>
+      </a>
+      <a href="https://instagram.com/m_mamad__" target="_blank" rel="noopener">
+        <span>Instagram</span><span>@m_mamad__</span>
+      </a>
+      <a href="https://linkedin.com/in/muhammad-sholeh" target="_blank" rel="noopener">
+        <span>LinkedIn</span><span>/in/Muhammad Sholeh</span>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2026 Moch Sholeh — Nganjuk, Jawa Timur</footer>
+
+<script>
+  // ===== SIGNATURE: animated starfield, twinkling stars on canvas =====
+  (function () {
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.documentElement.scrollHeight;
+    }
+
+    function makeStars() {
+      const count = Math.floor((canvas.width * canvas.height) / 9000);
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.3 + 0.3,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.015 + 0.005
+      }));
+    }
+
+    function draw(time) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        const twinkle = reduceMotion ? 1 : 0.5 + 0.5 * Math.sin(s.phase + time * s.speed);
+        ctx.globalAlpha = 0.25 + twinkle * 0.75;
+        ctx.fillStyle = '#F2F1F7';
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      if (!reduceMotion) requestAnimationFrame(draw);
+    }
+
+    resize();
+    makeStars();
+    draw(0);
+
+    window.addEventListener('resize', () => { resize(); makeStars(); });
+  })();
+
+  // ===== Tab switching (Video / Desain), digabung juga di sini =====
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = { video: document.getElementById('panel-video'), desain: document.getElementById('panel-desain'), ig: document.getElementById('panel-ig') };
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      Object.values(panels).forEach(p => p.classList.remove('active'));
+      panels[btn.dataset.tab].classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
