@@ -194,6 +194,7 @@
 
   .facts li {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 16px;
     padding: 10px 0;
@@ -223,6 +224,23 @@
     cursor: pointer;
   }
 
+  .filter-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+}
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
   .tab-btn.active {
     background: var(--ink);
     color: #fff;
@@ -239,21 +257,49 @@
   }
 
   .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
+
+  .card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.25);
+}
 
   .card__media {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    background: #000;
+transition: transform 0.4s ease;
   }
 
+  .card:hover .card__media {
+  transform: scale(1.05);
+  }
+
+  .fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  
   #panel-video .card__media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
+  height: auto;
+  object-fit:contain;
+  }
+
+  #panel-desain .card__media {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
   }
 
   .card__body { padding: 12px 14px 16px; }
@@ -361,12 +407,32 @@
     <p class="edu">S1 Teknologi Informasi (peminatan Visual Effects) — Universitas AMIKOM Yogyakarta</p>
 
     <h2>Pengalaman Kerja</h2>
-    <ul>
-      <li><span>Content Creator</span><span>PT. Kong Akademi</span></li>
-      <li><span>Graphic Design Intern</span><span>PT. Dipdop Universe</span></li>
-      <li><span>Freelance Video &amp; Desain</span><span>CV. Parama Creative</span></li>
-      <li><span>CS Inbound</span><span>Shopee Indonesia</span></li>
-    </ul>
+<ul>
+  <li>
+    <div style="display:flex;justify-content:space-between;gap:16px;width:100%;">
+      <span>Content Creator</span><span>PT. Kong Akademi</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0;">Mengelola produksi konten visual dan strategi media sosial untuk 3+ akun brand, meliputi pengambilan gambar/video, video editing, color grading, graphic design, dan manajemen posting harian untuk TikTok dan Instagram</p>
+  </li>
+  <li>
+    <div style="display:flex;justify-content:space-between;gap:16px;width:100%;">
+      <span>Graphic Design Intern</span><span>PT. Dipdop Universe</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0;">Membantu dalam proses desain grafis untuk berbagai kebutuhan marketing dan komunikasi visual.</p>
+  </li>
+  <li>
+    <div style="display:flex;justify-content:space-between;gap:16px;width:100%;">
+      <span>Freelance Video &amp; Desain</span><span>CV. Parama Creative</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0;">Memproduksi konten visual sebagai videographer dan cameraman. Merancang aset grafis kreatif dan mengedit video untuk proyek klien.</p>
+  </li>
+  <li>
+    <div style="display:flex;justify-content:space-between;gap:16px;width:100%;">
+      <span>CS Inbound</span><span>Shopee Indonesia</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0;">Menangani ribuan panggilan masuk terkait transaksi dan pengiriman. Memberikan solusi cepat (FCR) dan mempertahankan standar kepuasan pelanggan (CSAT).</p>
+  </li>
+</ul>
   </section>
 
   <!-- KARYA: TAB VIDEO / DESAIN -->
@@ -382,7 +448,7 @@
       <div class="grid">
 
         <!-- ==== GANTI KARTU VIDEO DI SINI ==== -->
-        <div class="card">
+        <div class="card"> <div class="card fade-in"></div>
           <video class="card__media" controls poster="assets/images/placeholder-video-1.jpg">
             <source src="assets/videos/BUMPER BANK BPD.mp4" type="video/mp4">
           </video>
@@ -392,7 +458,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card"><div class="card fade-in"></div>
           <video class="card__media" controls poster="assets/images/placeholder-video-2.jpg">
             <source src="assets/videos/BUMPER ML.mp4" type="video/mp4">
           </video>
@@ -402,7 +468,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card"><div class="card fade-in"></div>
           <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
             <source src="assets/videos/BUMPER SD AL AZHAR.mp4" type="video/mp4">
           </video>
@@ -412,13 +478,53 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card"><div class="card fade-in"></div>
           <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
             <source src="assets/videos/LOGO ANIMASI.mp4" type="video/mp4">
           </video>
           <div class="card__body">
             <p class="card__title">LOGO ANIMASI</p>
             <p class="card__meta">Sebagai editor , mengerjakan video logo animasi untuk sebuah brand</p>
+          </div>
+        </div>
+
+        <div class="card"><div class="card fade-in"></div>
+          <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
+            <source src="assets/videos/SHORT MOVIE-THE ENIGMATIC CHRONICLES_AMICTA.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">SHORT MOVIE - THE ENIGMATIC CHRONICLES</p>
+            <p class="card__meta">Sebagai editor dan visual effect artist , mengerjakan video short movie</p>
+          </div>
+        </div>
+
+        <div class="card"><div class="card fade-in"></div>
+          <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
+            <source src="assets/videos/IKLAN ML.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">IKLAN ML</p>
+            <p class="card__meta">Sebagai editor , mengerjakan iklan untuk game mobile legends</p>
+          </div>
+        </div>
+
+        <div class="card"><div class="card fade-in"></div>
+          <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
+            <source src="assets/videos/BAKARA.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">OBAT BAWANG MERAH (BAKARA)</p>
+            <p class="card__meta">Sebagai editor , mengerjakan video untuk campaign OBAT BAWANG MERAH BAKARA</p>
+          </div>
+        </div>
+
+        <div class="card"><div class="card fade-in"></div>
+          <video class="card__media" controls poster="assets/images/placeholder-video-3.jpg">
+            <source src="assets/videos/ASUS ROG.mp4" type="video/mp4">
+          </video>
+          <div class="card__body">
+            <p class="card__title">ASUS ROG</p>
+            <p class="card__meta">Sebagai editor , mengerjakan video untuk campaign ASUS ROG</p>
           </div>
         </div>
         <!-- ==== SAMPAI SINI ==== -->
@@ -428,45 +534,210 @@
 
     <!-- PANEL DESAIN -->
     <div class="panel" id="panel-desain">
+     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+    <button class="filter-btn active" data-filter="all">Semua</button>
+    <button class="filter-btn" data-filter="poster">poster</button>
+    <button class="filter-btn" data-filter="event">event</button>
+    <button class="filter-btn" data-filter="sertifikat">sertifikat</button>
+    <button class="filter-btn" data-filter="social">social</button>
+     </div>
+     <div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:100;align-items:center;justify-content:center;padding:24px;cursor:zoom-out;">
+     <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px;">
+     </div>
       <div class="grid">
 
         <!-- ==== GANTI KARTU DESAIN DI SINI ==== -->
-        <div class="card">
-          <img class="card__media" src="assets/images/design-01.jpg" alt="Karya desain 1">
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/REAL MADRID VS JUVENTUS.jpg" alt="Karya desain 1" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
           <div class="card__body">
-            <p class="card__title">Judul Desain 1</p>
+            <p class="card__title">POSTER PERTANDINGAN SEPAK BOLA REAL MADRID VS JUVENTUS</p>
             <p class="card__meta">Poster · Social Media</p>
           </div>
         </div>
 
-        <div class="card">
-          <img class="card__media" src="assets/images/design-02.jpg" alt="Karya desain 2">
+        <div class="card" data-category="event">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Depan.jpg" alt="Karya desain 2" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
           <div class="card__body">
-            <p class="card__title">Judul Desain 2</p>
-            <p class="card__meta">Key Visual · Branding</p>
+            <p class="card__title">DESAIN KOTAK TOMBOL MEMULAI ACARA TAMPAK DEPAN</p>
+            <p class="card__meta">Banner · Event Kampus</p>
           </div>
         </div>
 
-        <div class="card">
-          <img class="card__media" src="assets/images/design-03.jpg" alt="Karya desain 3">
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Poster.png" alt="Karya desain 3" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
           <div class="card__body">
-            <p class="card__title">Judul Desain 3</p>
+            <p class="card__title">POSTER CAMPAGNE</p>
             <p class="card__meta">Feed · Carousel</p>
           </div>
         </div>
 
-        <div class="card">
-          <img class="card__media" src="assets/images/design-04.jpg" alt="Karya desain 4">
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/POSTER AFRAID.jpg" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
           <div class="card__body">
-            <p class="card__title">Judul Desain 4</p>
-            <p class="card__meta">Logo · Identity</p>
+            <p class="card__title">POSTER AFRAID</p>
+            <p class="card__meta">Poster · Identity Film</p>
           </div>
         </div>
-        
+
+        <div class="card" data-category="streaming">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/STREAM.png" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">LAYOUT STREAMING</p>
+            <p class="card__meta">Asset · Streaming</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="sertifikat">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Sertifikat Boim.jpg" alt="Karya desain 1" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">SERTIFIKAT EVENT</p>
+            <p class="card__meta">SERTIFIKAT · Social Media</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="social">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/linlin.jpg" alt="Karya desain 2" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">DESAIN ID CARD</p>
+            <p class="card__meta">ID Card · Event Kampus</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/tes-Educativa_01.jpg" alt="Karya desain 3" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER CAMPAGNE</p>
+            <p class="card__meta">Feed · Carousel</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/POSTERR NDLOGOK.png" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER VIGILANTE</p>
+            <p class="card__meta">Poster · Identity Film</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="event">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/welcome gate utama.jpg" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">WELCOME GATE UTAMA</p>
+            <p class="card__meta">Asset · Event Kampus</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/ONIC.jpg" alt="Karya desain 1" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER MOBILE LEGEND</p>
+            <p class="card__meta">Poster · Social Media</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Papian Acu.jpg" alt="Karya desain 2" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER MOBILE LEGEND</p>
+            <p class="card__meta">Poster · Social Media</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Posster.png" alt="Karya desain 3" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER CAMPAGNE</p>
+            <p class="card__meta">Feed · Carousel</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="event">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/QUE CARD-01.jpg" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">QUE CARD</p>
+            <p class="card__meta">Asset · Event Kampus</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Idul adha(1).jpg" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER IDUL ADHA</p>
+            <p class="card__meta">Poster · Event</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/KIMETSU POSTER.png" alt="Karya desain 1" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER FILM</p>
+            <p class="card__meta">Poster · Social Media</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/FInal champion.jpg" alt="Karya desain 2" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER FINAL CHAMPION</p>
+            <p class="card__meta">Poster · Social Media</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="event">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/umbul.jpg" alt="Karya desain 3" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">UMBUL UMBUL</p>
+            <p class="card__meta">Asset · Event Kampus</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Idul fitri.png" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">POSTER IDUL FITRI</p>
+            <p class="card__meta">Poster · Event</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="poster">
+          <div class="card fade-in"></div>
+          <img class="card__media" src="assets/images/Burger-01.png" alt="Karya desain 4" onclick="openLightbox(this.src)" style="cursor:zoom-in;">
+          <div class="card__body">
+            <p class="card__title">BURGER</p>
+            <p class="card__meta">Poster · Social Media</p>
+          </div>
+        </div>
+ 
+            </div>
+
+        <div style="text-align:center;padding-top:24px;">
+        <a href="https://drive.google.com/drive/folders/1bfjpXhpa7A1n1ps7mVrJZLw3iky4hVIr?usp=drive_link" target="_blank" rel="noopener"
+         style="font-size:15px;font-weight:600;color:var(--accent);text-decoration:none;">
+        Lihat Semua Desain →
+        </a>
+         </div>
+         </div>
         <!-- ==== SAMPAI SINI ==== -->
 
-      </div>
-    </div>
 
    <div class="panel" id="panel-ig">
   <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:80px 16px;text-align:center;">
@@ -513,6 +784,7 @@
   <section class="contact" id="kontak">
     <h2>Kontak</h2>
     <div class="contact__list">
+      <div class="card fade-in"></div>
       <a href="mailto:sholehmuhammad0123@gmail.com">
         <span>Email</span><span>sholehmuhammad0123@gmail.com</span>
       </a>
@@ -589,6 +861,39 @@
       panels[btn.dataset.tab].classList.add('active');
     });
   });
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+const designCards = document.querySelectorAll('#panel-desain .card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    designCards.forEach(card => {
+      card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+    });
+  });
+});
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
 </script>
 
 </body>
